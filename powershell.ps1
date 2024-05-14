@@ -26,5 +26,4 @@ $users = Get-WmiObject Win32_UserProfile | Where-Object { $_.Special -eq $false 
 foreach ($user in $users) {
     $path = Join-Path $user.LocalPath "AppData\Local\FiveM\FiveM.app\data\cache\subprocess\FiveM_b3095_GTAProcess.exe"
     New-NetFirewallRule -DisplayName "Blokuj FiveM" -Direction Inbound -Program $path -Action Block
-    New-NetFirewallRule -DisplayName "Blokuj FiveM" -Direction Outbound -Program $path -Action Block
 }
