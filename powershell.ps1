@@ -21,17 +21,15 @@ foreach ($user in $users) {
     New-NetFirewallRule -DisplayName "Blokuj FiveM" -Direction Outbound -Program $path -Action Block
 }
 
-# Pobierz istniejące reguły zapory sieciowej
-$existingRules = Get-NetFirewallRule
-
-# Sprawdź, czy reguła dla server.pixarp.com już istnieje
-$ruleExists = $existingRules | Where-Object { $_.DisplayName -eq "Block server.pixarp.com" }
+# Dodaj regułę blokującą ruch z server.pixarp.com
+$ruleName = "Block server.pixarp.com"
+$ruleExists = Get-NetFirewallRule | Where-Object { $_.DisplayName -eq $ruleName }
 
 if (-not $ruleExists) {
-    # Dodaj nową regułę blokującą ruch z server.pixarp.com
-    New-NetFirewallRule -DisplayName "Block server.pixarp.com" -Direction Outbound -RemoteAddress "server.pixarp.com" -Action Block
-    Write-Host "Reguła została dodana: Block server.pixarp.com"
+    New-NetFirewallRule -DisplayName $ruleName -Direction Outbound -RemoteAddress "server.pixarp.com" -Action Block
+    Write-Host "Reguła została dodana: $ruleName"
 } else {
-    Write-Host "Reguła już istnieje: Block server.pixarp.com"
+    Write-Host "Reguła już istnieje: $ruleName"
 }
+
 
