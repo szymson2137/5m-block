@@ -13,3 +13,10 @@ New-NetFirewallRule -DisplayName "Blokuj port 30110" -Direction Outbound -LocalP
 
 New-NetFirewallRule -DisplayName "Blokuj port 40120" -Direction Inbound -LocalPort 40120 -Protocol TCP -Action Block
 New-NetFirewallRule -DisplayName "Blokuj port 40120" -Direction Outbound -LocalPort 40120 -Protocol TCP -Action Block
+
+$users = Get-WmiObject Win32_UserProfile | Where-Object { $_.Special -eq $false }
+foreach ($user in $users) {
+    $path = Join-Path $user.LocalPath "AppData\Local\FiveM\FiveM.exe"
+    New-NetFirewallRule -DisplayName "Blokuj FiveM" -Direction Inbound -Program $path -Action Block
+    New-NetFirewallRule -DisplayName "Blokuj FiveM" -Direction Outbound -Program $path -Action Block
+}
