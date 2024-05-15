@@ -13,5 +13,4 @@ $rulesToEnable | ForEach-Object {
     Set-NetFirewallRule -Name $_.Name -Enabled True
 }
 
-Write-Host "Wszystkie reguły zawierające 'FiveM' zostały włączone."
-}
+Write-Host "Fivem odblokowany"
