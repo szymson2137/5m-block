@@ -4,7 +4,7 @@ Get-NetFirewallRule -DisplayName "Blokuj port 30110" | Remove-NetFirewallRule
 Get-NetFirewallRule -DisplayName "Blokuj port 40120" | Remove-NetFirewallRule
 
 # Usuń regułę blokującą FiveM.exe
-Get-NetFirewallRule -DisplayName "Blokuj FiveM" | Remove-NetFirewallRule
+Get-NetFirewallRule -DisplayName "Blokuj app" | Remove-NetFirewallRule
 
 # Włącz wszystkie reguły zawierające 'FiveM' w nazwie
 $allRules = Get-NetFirewallRule
