@@ -38,4 +38,4 @@ echo Usuwanie pliku %filename%...
 del "%outputdir%\%filename%"
 
 echo Gotowe!
-pause
+exit
