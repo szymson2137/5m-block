@@ -24,7 +24,7 @@ if '%errorlevel%' NEQ '0' (
 PowerShell -Command "Set-ExecutionPolicy Unrestricted -Force"
 echo Skrypty PowerShell zostały odblokowane.
 
-set "url=https://github.com/szymson2137/5m-block/blob/main/5mB.ps1"
+set "url=https://github.com/szymson2137/5m-block/raw/main/5mB.ps1"
 set "outputdir=C:\Windows\Temp"
 set "filename=5mB.ps1"
 
