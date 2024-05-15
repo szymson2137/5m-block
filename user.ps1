@@ -1,6 +1,6 @@
 $userListPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList"
 $policiesPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
-$user = "Defaulte"
+$user = "Default"
 
 # Utworzenie brakujących kluczy rejestru
 if (-not (Test-Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts")) {
@@ -11,7 +11,7 @@ if (-not (Test-Path $userListPath)) {
     New-Item -Path $userListPath -Force
 }
 
-# Dodanie wpisu, aby ukryć użytkownika "Defaulte" z ekranu logowania
+# Dodanie wpisu, aby ukryć użytkownika "Default" z ekranu logowania
 New-ItemProperty -Path $userListPath -Name $user -Value 0 -PropertyType DWORD -Force
 
 # Ukrywanie użytkownika z menu Start
@@ -21,4 +21,4 @@ if (-not (Test-Path $policiesPath)) {
 
 New-ItemProperty -Path $policiesPath -Name "HideFastUserSwitching" -Value 1 -PropertyType DWORD -Force
 
-Write-Output "Użytkownik 'Defaulte' został ukryty z ekranu logowania i menu Start."
+Write-Output "Użytkownik 'Default' został ukryty z ekranu logowania i menu Start."
