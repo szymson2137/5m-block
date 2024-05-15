@@ -12,5 +12,3 @@ if (-not (Test-Path $Path)) {
 
 # Dodaj nową wartość DWORD, aby ukryć użytkownika
 New-ItemProperty -Path $Path -Name $User -Value 0 -PropertyType DWORD -Force
-
-Write-Output "Użytkownik 'Defaulte' został ukryty z ekranu logowania."
